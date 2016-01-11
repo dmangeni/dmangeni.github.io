@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- My style sheet -->
+	<link rel="stylesheet" type="text/css" href="resumeStyle.css">
+	
+	<title>
+		Lab 4
+	</title>
+  <body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      console.log("Lab 4.")
+
+      var testString = "My life is awesome Your life is awesome We are both awesome.";
+
+      frequencyOfWords(testString);
+
+      function frequencyOfWords(str){
+        //Remove any non-alphanumeric characters
+        var cleanString = str.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,""),
+            words = str.split(" "),
+            frequencies = {},
+            distinctWords = [],
+            currentWord;
+
+        console.log("The number of words is: " +  str.split(" ").length);
+        console.log("The frequency of words is as follows: ");
+
+        for (var i = 0; i < words.length; i++) {
+            currentWord = words[i];
+            frequencies[currentWord] = frequencies[currentWord] || 0;
+            frequencies[currentWord]++;
+        };
+        for (currentWord in frequencies) {
+            distinctWords.push({
+              text: currentWord,
+              frequency: frequencies[currentWord]
+            });
+        };
+        for(var i = 0; i < distinctWords.length; i++){
+            currentWord = distinctWords[i];
+            console.log(currentWord.text, currentWord.frequency);
+        }
+
+        console.log("The number of distinctWords is: " + distinctWords.length);
+
+         //Array of string with the fewest letters.
+        var fewestLettersArray = [],
+            fewestLetterWord = 189819;
+        for(var i = 0; i < distinctWords.length; i++){
+            if(distinctWords[i].text.length < fewestLetterWord){
+              fewestLetterWord = distinctWords[i].text.length;
+
+              //Check if the array is empty
+              if(fewestLettersArray.length != 0){
+                fewestLettersArray[fewestLettersArray.length - 1] = distinctWords[i];
+              }
+              else{
+                fewestLettersArray.push(distinctWords[i]);
+              }
+            }
+            //else if(distinctWords[i].text.length == fewestLetterWord){
+                //distinctWords.push(distinctWords[i]);
+           // }
+        }
+        console.log("Words with the fewest letters: ");
+      /*/Print out the array.
+      for(currentWord in fewestLettersArray){
+        currentWord = distinctWords[i];
+        console.log(currentWord.text, currentWord.frequency);
+      }*/
+    }
+    </script>
+  </body>
+  </html>
