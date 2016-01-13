@@ -173,18 +173,16 @@
 
                 //Ensure the results are to two decimal points
                 totalPaid = parseInt(totalInterest) + parseInt(loan);
-                paidToPrincipal = (totalPaid / loan)* 100;
-                totalInterest = totalInterest.toFixed(2);
-                totalPrincipalPaid = totalPrincipalPaid.toFixed(2);
+                paidToPrincipal = (totalPaid / loan);
 
 
-                //Create an array object to hold the items of the list
-                var labels = [{"Loan" : loan }, 
-                              {"Annual Rate": annualRate}, 
-                              {"Monthly Payment": monthlyPayment},
-                              {"Total Paid" : totalInterest}, 
-                              {"Total Interest" : totalInterest},
-                              {"Ratio: PaidToPrincipal": paidToPrincipal}];
+                //Create an array of arrays to hold the items of the list
+                var labels = [["Loan", accounting.formatMoney(loan)], 
+                              ["Annual Rate", annualRate], 
+                              ["Monthly Payment", monthlyPayment.toFixed(2)],
+                              ["Total Paid" , totalPaid.toFixed(2)], 
+                              ["Total Interest" , totalInterest.toFixed(2)],
+                              ["Ratio: PaidToPrincipal", paidToPrincipal.toFixed(2)]];
             
 
                  //Create the Mortgage summary table only if it does not exist
@@ -204,24 +202,22 @@
             {
                 
                 var mortgageSummaryTable = $("<table/>").attr("id","summaryTable").addClass("table table-hover");
-
+                
 
                 for(var r = 0; r < rows; r++)
                 {
                     var row = $("<tr/>").attr("id", "summaryTableRow" + r).addClass('summaryTableRow');
 
-                    mortgageSummaryTable.append(row);
-
-                    var count = 0;
-
                     for(var c = 0; c < cols; c++)
                     {
-                        var outputString = data[count];
+                        var outputString = data[r][c];
 
                         var subrow = $("<td/>").attr("id", "summaryTableColumn" + c).addClass("summaryTableColumn").text(outputString);
-                        row.append(subrow);  
-                        
+ 
+                        row.append(subrow);     
                     }
+
+                    mortgageSummaryTable.append(row);
                     
                 }
                 return mortgageSummaryTable;
