@@ -1,53 +1,296 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    	<!-- Optional theme -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	
-	<!-- My style sheet -->
-	<link rel="stylesheet" type="text/css" href="resumeStyle.css">
-	<title>
-		mortgage calculator
-	</title>
-</head>
-<body>
-   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
-    </script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
-    </script>
-    <script type="text/javascript">
-    var term;
-    var annualRate;
-    var loan;
-    var monthlyRate;
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    	
+    	<!-- My style sheet -->
+    	<link rel="stylesheet" type="text/css" href= "C:/Users/Dorah/Documents/GitHub/dmangeni.github.io/mortgageCalculator/mortgagestyle.css">
+    	<title>
+    		mortgage calculator
+    	</title>
+    </head>
+    <body>
+       <div class = "container-fluid">   
+            <fieldset>
+                <legend>
+                    Mortgage Payment Schedule
+                </legend>
 
-    testFunction(12, 9, 100000);
+                <form role ="form" id = "inputForm">
 
-    var testFunction(year, rate, amount)
-    {
-        monthlyRate = rate / 12;
-        term = year * 12;
-        console.log("No of months: " + term);
-        console.log("Amount of loan: " + loan);
-        console.log("Monthly rate: " + rate);
-    }
-    </script>
-</body>
-</html>
+                    <!--Input: Loan or principal -->
+                    <div class = "form-group">
+                        <label for = "loanPrincipalTB"> Principal: </label>
+                        <input type = "number" class="form-control" name="loanPrincipalTB" id="loanPrincipalTB" placeholder = "Enter Loan">
+                    </div>
+            
+                    <!-- Input: Annual Interest rate -->
+                    <div class = "form-group">
+                        <label for = "interestRateTB"> Annual Interest rate (%): </label>
+                        <input type = "number" class="form-control" name="interestRateTB" id="interestRateTB" placeholder = "Enter interest rate">
+                    </div>
+
+                    <!-- Drop down list of loan term -->
+                    <div class="form-group">                        
+                        <label for="termDropDownBT">Term (Years): </label> 
+                        <!-- drop down list -->
+                        <select class="form-control" id="termDropDownBT"> 
+                            <option value= "15"> 15 years</option> 
+                            <option value= "20"> 20 years</option> 
+                            <option value= "30"> 30 years</option> 
+                        </select>                   
+                    </div>
+
+                    <!-- Drop down list of loan term
+                    <div class = "form-group">
+                        <label for = "termDropDownBT"> Term (Years): </label>
+                        <div class = "dropdown">
+                            <button class = "btn btn-default dropdown-toggle" type = "button" data-toggle = "dropdown" id = "termDropDownBT">
+                                select term
+                                <span class = "caret"></span>
+                            </button>
+                            <ul class = "dropdown-menu">
+                                <li><a href="#" id = "fifteenYears"> 15 years </a></li>
+                                <li><a href="#" id = "twentyYears">  20 years </a></li>
+                                <li><a href="#" id = "thirtyYears"> 30 years </a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                    <!--Submit and clear buttons -->
+                    <div class = "form-group">
+                        <button type="button" id="submitButton" class="btn btn-default">
+                            <!-- a glyphicon is a scalable pic that can be used in controls. 
+                            always create an empty span with the glyphicon class and the desired pic (http://glyphicons.com/) -->
+                            <span class="glyphicon glyphicon-refresh"></span>
+                            Display the Data 
+                        </button>
+                        
+                        <button type="button" id="clearButton" class="btn btn-default">
+                            Clear Results <span class="glyphicon glyphicon-flash"></span>
+                        </button>
+                    </div>
+                </form>
+                <div class = "row">
+                    <div class = "col-xs-8" id = "outputDiv">
+                        
+                    </div>
+                </div>   
+            </fieldset>
+        </div>
+
+         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+        </script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+        </script>
+
+        <script>
+        
+        $(document).ready(function()
+        {
+            console.log("DOM loaded");
+
+            //get the buttons
+            var submitButton = document.querySelector("#submitButton");
+            var clearButton = document.querySelector("#clearButton");
+
+            //link the 'click' event on the button to the 'clear' function
+            clearButton.addEventListener("click", clear, false);
+                
+            //link the 'click' event on the button to the 'display' function
+            submitButton.addEventListener("click", display, false);
+
+             //Global variables
+            var numberOfMonths,
+                monthlyRate,
+                monthlyPayment,
+                totalPaid,
+                paidToPrincipal,
+                totalInterest,
+                loan;
+
+            function display(event)
+            {
+                 
+                //store a big string of results
+                //var output = "<hr>";
+
+                //Grab the value for the loan from the textbox
+                loan = document.querySelector("#loanPrincipalTB").value;
+
+
+                //Grab the value for interest rate from the textbox
+                var annualRate = document.querySelector("#interestRateTB").value;
+
+
+                //Grab the value for the loan period from the drop down list object
+                var termDropDown = document.querySelector("#termDropDownBT");
+                var yearIndex = termDropDown.selectedIndex;
+                var yearName = termDropDown.options[yearIndex].text;
+                var numberOfYears = parseInt(termDropDown.options[yearIndex].value);
+
+
+                //Calculate summary table data
+                monthlyRate = annualRate / (12 * 100);
+                numberOfMonths = numberOfYears * 12;
+
+                //Get the monthly payment
+                var temp = 1 - (Math.pow((1 + monthlyRate),( -numberOfMonths)));
+                monthlyPayment = (monthlyRate / temp) * loan;
+
+                //Get the total principal paid and total interest
+                totalInterest = 0;
+                var totalPrincipalPaid = 0,
+                    principalBalance = loan;
+
+                for(var i = 0; i < numberOfMonths; i++)
+                {
+                    var interest = monthlyRate * principalBalance;
+                    var paymentForPrincipal = monthlyPayment - interest;
+
+                    totalInterest = totalInterest + interest;
+                    totalPrincipalPaid = totalPrincipalPaid + paymentForPrincipal;
+                    principalBalance = principalBalance - paymentForPrincipal;
+                }
+
+                //Ensure the results are to two decimal points
+                totalPaid = parseInt(totalInterest) + parseInt(loan);
+                paidToPrincipal = (totalPaid / loan)* 100;
+                totalInterest = totalInterest.toFixed(2);
+                totalPrincipalPaid = totalPrincipalPaid.toFixed(2);
+
+
+                //Create an array object to hold the items of the list
+                var labels = [{"Loan" : loan }, 
+                              {"Annual Rate": annualRate}, 
+                              {"Monthly Payment": monthlyPayment},
+                              {"Total Paid" : totalInterest}, 
+                              {"Total Interest" : totalInterest},
+                              {"Ratio: PaidToPrincipal": paidToPrincipal}];
+            
+
+                 //Create the Mortgage summary table only if it does not exist
+
+                var mysummaryTable = document.querySelector("#summaryTable");
+                var retVal = document.getElementById("outputDiv").contains(mysummaryTable);
+
+                if(retVal == false)
+                {
+                   $("#outputDiv").append(createSummaryTable(labels, 6, 2)); 
+                }
+                
+            }
+            
+            //Create a summary table
+            function createSummaryTable(data, rows, cols)
+            {
+                
+                var mortgageSummaryTable = $("<table/>").attr("id","summaryTable").addClass("table table-hover");
+
+
+                for(var r = 0; r < rows; r++)
+                {
+                    var row = $("<tr/>").attr("id", "summaryTableRow" + r).addClass('summaryTableRow');
+
+                    mortgageSummaryTable.append(row);
+
+                    var count = 0;
+
+                    for(var c = 0; c < cols; c++)
+                    {
+                        var outputString = data[count];
+
+                        var subrow = $("<td/>").attr("id", "summaryTableColumn" + c).addClass("summaryTableColumn").text(outputString);
+                        row.append(subrow);  
+                        
+                    }
+                    
+                }
+                return mortgageSummaryTable;
+            }
+
+            /*/Create a summary table
+            function createSummaryTable(rows, cols)
+            {
+                var mortgageSummaryTable = $("<table/>").attr("id","summaryTable").addClass("table table-hover");
+                for(var r = 0; r < rows; r++)
+                {
+                    var row = $("<tr/>").attr("id", "summaryTableRow" + r).addClass('summaryTableRow');
+
+                    for(var c = 0; c < cols; c++)
+                    {
+                        var outputString = r.toString() + "," + c.toString();
+                        var subrow = $("<td/>").attr("id", "summaryTableColumn" + c).addClass("summaryTableColumn").text(outputString);
+                        row.append(subrow);  
+                        
+                    }
+                    mortgageSummaryTable.append(row);
+                }
+                return mortgageSummaryTable;
+            }*/
+
+            function updateSummaryTable()
+            {
+
+            }
+            /*/Create a summary table
+            function createSummaryTable(rows, cols)
+            {
+                var mortgageSummaryTable = $("<table/>").attr("id","summaryTable").addClass("table table-hover");
+                for(var r = 0; r < rows; r++)
+                {
+
+
+                    var row = $("<tr/>").attr("id", "summaryTableRow" + r).addClass('summaryTableRow');
+
+                    for(var c = 0; c < cols; c++)
+                    {
+                        if(r == 0)
+                        {
+                            var headerRow = $("<th/>").attr("id", "summaryTableHeadingColumn" + c).addClass("summaryTableHeadingColumn").text("Column " + c);
+                            row.append(headerRow);
+                        }
+                        else
+                        {
+                            var outputString = r.toString() + "," + c.toString();
+                            var subrow = $("<td/>").attr("id", "summaryTableColumn" + c).addClass("summaryTableColumn").text(outputString);
+                            row.append(subrow);  
+                        }
+                    }
+                    mortgageSummaryTable.append(row);
+                }
+                return mortgageSummaryTable;
+            }*/
+
+             //function to clear out the output div
+            function clear(e) 
+            {
+                //get the output div
+                    var outputDiv = document.querySelector("#outputDiv");
+                    
+                //clear out the entire contents of the div
+                 outputDiv.innerHTML = "";
+            }
+        });
+
+        </script>
+    </body>
+    </html>
