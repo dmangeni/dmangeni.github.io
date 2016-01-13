@@ -177,7 +177,7 @@
 
 
                 //Create an array of arrays to hold the items of the list
-                var labels = [["Loan", accounting.formatMoney(loan)], 
+                var labels = [["Loan", loan], 
                               ["Annual Rate", annualRate], 
                               ["Monthly Payment", monthlyPayment.toFixed(2)],
                               ["Total Paid" , totalPaid.toFixed(2)], 
@@ -203,7 +203,6 @@
                 
                 var mortgageSummaryTable = $("<table/>").attr("id","summaryTable").addClass("table table-hover");
                 
-
                 for(var r = 0; r < rows; r++)
                 {
                     var row = $("<tr/>").attr("id", "summaryTableRow" + r).addClass('summaryTableRow');
