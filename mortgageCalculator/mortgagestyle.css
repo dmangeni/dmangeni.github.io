@@ -2,7 +2,10 @@ body{
   	margin-left: 12.5em;
   	margin-right: 12.5em;
   	margin-top: 3.125em;
-  	background-color: silver;
+  	background-image: url(http://www.pelikan.com/pulse/__v142/exclusive/backgrounds/products/pura/pura.jpg);
+  	background-size: auto;
+  	background-repeat: repeat;
+  	background-position:center;
 }
 h1.heading{
 	color: white;
