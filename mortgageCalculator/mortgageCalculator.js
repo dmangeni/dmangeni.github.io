@@ -1,4 +1,4 @@
-$(document).ready(function())
+$(document).ready(function()
 {
 	console.log("DOM loaded");
 
@@ -197,6 +197,33 @@ $(document).ready(function())
 	    var loanheading = $("<h3/>").attr("id", "loanInformationHeading").addClass("subtitle").text("Loan Information");
 	    $("#loanInformation").append(loanheading);
 	}
+	/*function startList(numberOfMonths)
+	{
+		
+		var startList = $("<ul/>").attr("id", "startList").addClass("dropdown-menu").;
+		$("#startListDiv").append(startList);
+
+		$("#startList").each(function(){
+			for(int i = 1; i <= numberOfMonths; i++){
+				startList.append("<li>" + $(this).text(i) + "</li>");
+			}
+		}
+
+		var endList = $("<ul/>").attr("id", "endList").addClass("dropdown-menu");
+		$("#endListDiv").append(startList);
+
+		$("#endList").each(function(){
+			for(int i = 1; i <= numberOfMonths; i++){
+				endList.append("<li>" + $(this).text(i) + "</li>");
+			}
+		}
+
+		$(this).append(
+    $('<input>', {
+        type: 'text',
+        val: $('#div1').text()
+    }) -->*/
+
 	 //function to clear out the output div
 	function clear(e) 
 	{
