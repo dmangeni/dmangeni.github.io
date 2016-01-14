@@ -26,12 +26,23 @@
     	</title>
     </head>
     <body>
-       <div class = "container-fluid">   
+       <div class = "container-fluid">
+            <div class = "row">
+            <div class = "col-sm-12">
+                <div class = "page-header">
+                    <h1>
+                        Mortgage Loan Calculator
+                    </h1>
+                </div>
+            </div>
+            </div>
+            <!--Defining the Loan information heading -->
+            <div class = "row">
+                <div class = "col-xs-8" id ="loanInformation">
+                    <!--Filling in dynamically -->
+                </div>
+            </div>   
             <fieldset>
-                <legend>
-                    Mortgage Payment Schedule
-                </legend>
-
                 <form role ="form" id = "inputForm">
 
                     <!--Input: Loan or principal -->
@@ -79,23 +90,24 @@
                             <!-- a glyphicon is a scalable pic that can be used in controls. 
                             always create an empty span with the glyphicon class and the desired pic (http://glyphicons.com/) -->
                             <span class="glyphicon glyphicon-refresh"></span>
-                            Display the Data 
+                            Display Data 
                         </button>
                         
                         <button type="button" id="clearButton" class="btn btn-default">
                             Clear Results <span class="glyphicon glyphicon-flash"></span>
                         </button>
                     </div>
-                </form>
-                <div class = "row">
-                    <div class = "col-xs-8" id = "summaryTableOutputDiv">  
-                    </div>
-                </div> 
-                <div class = "row">
-                    <div class = "col-xs-8" id = "amortizationScheduleOutputDiv">
-                    </div>
-                </div>  
+                </form> 
             </fieldset>
+
+            <div class = "row" id = "mortgageSummaryDiv">
+                <div class = "col-xs-8" id = "summaryTableOutputDiv">  
+                </div>
+            </div> 
+            <div class = "row" id = "mortgageScheduleDiv">
+                <div class = "col-xs-8" id = "amortizationScheduleOutputDiv">
+                </div>
+            </div> 
         </div>
 
          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -110,6 +122,8 @@
         $(document).ready(function()
         {
             console.log("DOM loaded");
+
+            createLoanInformationHeading();
 
             //get the buttons
             var submitButton = document.querySelector("#submitButton");
@@ -198,6 +212,9 @@
 
                 if(retVal1 == false && retVal2 == false)
                 {
+                    createMortgageSummaryHeading();
+                    createAmortizationScheduleHeading();
+
                    $("#summaryTableOutputDiv").append(createSummaryTable(summaryTablelabels, 6, 2));
                    $("#amortizationScheduleOutputDiv").append(createamortizationTable(numberOfMonths,monthlyPayment,annualRate,loan)); 
                 }  
@@ -285,14 +302,33 @@
                 }
                 return amortizationScheduleTable;
             }
+            function createMortgageSummaryHeading()
+            {
+                var sheading = $("<h3/>").attr("id", "summaryHeading").addClass("subtitle").text("Mortgage Summary");
+                $("#summaryTableOutputDiv").append(sheading);
+            }
+
+            function createAmortizationScheduleHeading()
+            {
+                var asheading = $("<h3/>").attr("id", "amortizationHeading").addClass("subtitle").text("Amortization Schedule");
+                $("#amortizationScheduleOutputDiv").append(asheading);
+            }
+            function createLoanInformationHeading()
+            {
+                var loanheading = $("<h3/>").attr("id", "loanInformationHeading").addClass("subtitle").text("Loan Information");
+                $("#loanInformation").append(loanheading);
+            }
              //function to clear out the output div
             function clear(e) 
             {
                 //get the output div
-                    var outputDiv = document.querySelector("#outputDiv");
+                    var outputDiv1 = document.querySelector("#mortgageSummaryDiv");
+                    var outputDiv2 = document.querySelector("#amortizationScheduleOutputDiv");
                     
                 //clear out the entire contents of the div
-                 outputDiv.innerHTML = "";
+                 outputDiv1.innerHTML = "";
+                 outputDiv2.innerHTML = "";
+
             }
         });
 
