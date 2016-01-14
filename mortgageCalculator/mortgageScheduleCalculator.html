@@ -64,7 +64,7 @@
                         <select class="form-control" id="termDropDownBT"> 
                             <option value= "15"> 15 years</option> 
                             <option value= "20"> 20 years</option> 
-                            <option value= "30"> 30 years</option> 
+                            <option value= "30" selected="selected"> 30 years</option> 
                         </select>                   
                     </div>
 
@@ -86,16 +86,56 @@
 
                     <!--Submit and clear buttons -->
                     <div class = "form-group">
-                        <button type="button" id="submitButton" class="btn btn-default">
+                        <!-- Buttons and drop down list for start year display -->
+                        <div class = "form-group">
+                        <label for = "startDropDownBT"> Start Year: </label>
+                            <span class = "dropdown">
+                                <button class = "btn btn-default dropdown-toggle" type = "button" data-toggle = "dropdown" id = "startDropDownBT">
+                                    select
+                                    <span class = "caret"></span>
+                                </button>
+                                <ul class = "dropdown-menu" id = "startList">
+                                    <li> 1 </li>
+                                    <li> 2 </li>
+                                    <li> 3 </li>
+                                </ul>
+                            </span>
+                        </div>
+
+                        <!-- Button and drop down list for End year -->
+                        <div class = "form-group">
+                        <label for = "startDropDownBT"> End Year: </label>
+                            <span class = "dropdown">
+                                <button class = "btn btn-default dropdown-toggle" type = "button" data-toggle = "dropdown" id = "startDropDownBT">
+                                    select
+                                    <span class = "caret"></span>
+                                </button>
+                                <ul class = "dropdown-menu" id = "endList">
+                                    <li> 1 </li>
+                                    <li> 2 </li>
+                                    <li> 3 </li>
+                                </ul>
+                            </span>
+                        </div>
+
+                        <!--Display button -->
+                        <div>
+                            <!--Buttons for displaying and clearing data -->
+                            <button type="button" id="submitButton" class="btn btn-default">
                             <!-- a glyphicon is a scalable pic that can be used in controls. 
                             always create an empty span with the glyphicon class and the desired pic (http://glyphicons.com/) -->
-                            <span class="glyphicon glyphicon-refresh"></span>
-                            Display Data 
-                        </button>
-                        
-                        <button type="button" id="clearButton" class="btn btn-default">
+                            Display Data <span class="glyphicon glyphicon-refresh"></span>
+                            </button>
+                        </div>
+
+                        <br>
+
+                        <!--Clear button -->
+                        <div>
+                            <button type="button" id="clearButton" class="btn btn-default">
                             Clear Results <span class="glyphicon glyphicon-flash"></span>
-                        </button>
+                            </button>
+                        </div>
                     </div>
                 </form> 
             </fieldset>

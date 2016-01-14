@@ -2,7 +2,7 @@ body{
   	margin-left: 12.5em;
   	margin-right: 12.5em;
   	margin-top: 3.125em;
-  	background-color: linen;
+  	background-color: silver;
 }
 h1.heading{
 	color: white;
@@ -44,6 +44,16 @@ ol{
 	list-style-type:"1" ;
 }
 img.displayed{
+	display: block;
+	margin-left: auto;
+    margin-right: auto
+}
+#submitButton{
+	display: block;
+	margin-left: auto;
+    margin-right: auto
+}
+#clearButton{
 	display: block;
 	margin-left: auto;
     margin-right: auto
