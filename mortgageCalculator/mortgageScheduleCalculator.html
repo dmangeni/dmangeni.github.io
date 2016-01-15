@@ -68,58 +68,41 @@
                         </select>                   
                     </div>
 
-                    <!--Submit and clear buttons -->
+                    <br>
+
+                    <!--Textbox for start and End Month -->
                     <div class = "form-group">
                         <!-- Buttons and drop down list for start year display -->
-                        <div class = "form-group" id = "startListDiv">
-                        <label for = "startDropDownBT"> Start Month: </label>
-                            <span class = "dropdown">
-                                <button class = "btn btn-default dropdown-toggle" type = "button" data-toggle = "dropdown" id = "startDropDownBT">
-                                    select
-                                    <span class = "caret"></span>
-                                </button>
-                                <ul class = "dropdown-menu" id = "startList" class = "monthList">
-                                    <!-- Filling in dynamically -->
-                                </ul>
-                            </span>
-                        </div>
+                        <div class = "form-group" id = "startMonthDiv">
+                           <span>
+                                <label for = "startMonthTB"> Enter Start Month: </label>
+                                <input type = "number" name="startMonthTB" id="startMonthTB" max = "360" min = "1" placeholder = "">
 
-                        <!-- Button and drop down list for End year -->
-                        <div class = "form-group" id = "endListDiv">
-                        <label for = "endDropDownBT"> End Month: </label>
-                            <span class = "dropdown">
-                                <button class = "btn btn-default dropdown-toggle" type = "button" data-toggle = "dropdown" id = "endDropDownBT">
-                                    select
-                                    <span class = "caret"></span>
-                                </button>
-                                <ul class = "dropdown-menu" id = "endList" class = "monthList">
-                                    <!-- filling in dynamically -->
-                                </ul>
-                            </span>
-                        </div>
-
-                        <!--Display button -->
-                        <div>
-                            <!--Buttons for displaying and clearing data -->
-                            <button type="button" id="submitButton" class="btn btn-default">
-                            <!-- a glyphicon is a scalable pic that can be used in controls. 
-                            always create an empty span with the glyphicon class and the desired pic (http://glyphicons.com/) -->
-                            Display Data <span class="glyphicon glyphicon-refresh"></span>
-                            </button>
-                        </div>
-
-                        <br>
-
-                        <!--Clear button -->
-                        <div>
-                            <button type="button" id="clearButton" class="btn btn-default">
-                            Clear Results <span class="glyphicon glyphicon-flash"></span>
-                            </button>
+                                <label for = "endMonthTB"> Enter End Month: </label>
+                                <input type = "number" name="startMonthTB" id="endMonthTB" max = "360" min = "1"placeholder = "">
+                           </span>
                         </div>
                     </div>
                 </form> 
             </fieldset>
 
+            <br>
+
+            <div>
+                 <!--Display button --> 
+                <button type="button" style="width:300px" id="submitButton" class="btn btn-default">
+                <!-- a glyphicon is a scalable pic that can be used in controls. 
+                always create an empty span with the glyphicon class and the desired pic (http://glyphicons.com/) -->
+                Display Data <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+                <br>
+                <!--Clear button -->
+                <button type="button" style="width:300px" id="clearButton" class="btn btn-default">
+                Clear Results <span class="glyphicon glyphicon-flash"></span>
+                </button>       
+            </div>
+
+        
             <div class = "row" id = "mortgageSummaryDiv">
                 <div class = "col-xs-8" id = "summaryTableOutputDiv">  
                 </div>

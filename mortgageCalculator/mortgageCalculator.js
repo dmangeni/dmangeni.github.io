@@ -3,11 +3,45 @@ $(document).ready(function()
 	console.log("DOM loaded");
 
 	createLoanInformationHeading();
+
+
+	var numberOfMonths = (parseInt($("#termDropDownBT option:selected").val()))*12;
+	var data = [];
+	for(var i = 1; i <= numberOfMonths; i++)
+	{
+		data[i] = i;
+	}
+
+	/*/Fill the drop down list for start month
+	$("#startDropDownBT").on("click", function()
+		{
+			var listItems = [];
+			$.each(data, function(index){
+	    		listItems.push($('<li/>').text(index + 1));
+	    	});
+
+	    	//$(".monthList").append("<li>" + $(this).text(i) + "</li>");
+			$("#startList").append(listItems);
+
+	});
+
+	//Fill the List for the end month
+	$("#endDropDownBT").on("click",function()
+		{
+			var listItems = [];
+			$.each(data, function(index){
+	    		listItems.push($('<li/>').text(index + 1));
+	    	});
+
+	    	//$(".monthList").append("<li>" + $(this).text(i) + "</li>");
+			$("#endList").append(listItems);
+
+	}); */
    
 	//link the 'click' event on the button to the 'display' function
 	$("#submitButton").on("click", function()
 	{
-		
+		//Grab the loan amount from the textbox
 		var loan = $("#loanPrincipalTB").val();
 		
 		//Grab the value for interest rate from the textbox
@@ -22,8 +56,6 @@ $(document).ready(function()
 		var numberOfMonths = numberOfYears * 12;
 		var temp = 1 - (Math.pow((1 + monthlyRate),( -numberOfMonths)));
 		var monthlyPayment = (monthlyRate / temp) * loan;
-
-		var obj = getSelectedYears(numberOfMonths);
 
 		//Get the total principal paid and total interest
 	    var totalPrincipalPaid = 0,
@@ -172,38 +204,6 @@ $(document).ready(function()
 	{
 	    var loanheading = $("<h3/>").attr("id", "loanInformationHeading").addClass("subtitle").text("Loan Information");
 	    $("#loanInformation").append(loanheading);
-	}
-	function getSelectedYears(numberOfMonths)
-	{
-		//Add event listener for the buttons.
-
-	    $("#startDropDownBT").on("click",function()
-		{
-			createList(numberOfMonths);
-		})
-
-		$("#endDropDownBT").on("click", function()
-		{
-			createList(numberOfMonths);
-		});
-
-		//Get the upper limit and lower limit for display
-		var lowerLimit = $("#startList").children("selected");
-		var upperLimit = $("#endList").children("selected");
-
-		var limits = [lowerLimit, upperLimit];
-
-		return limits;
-	}
-	function createList(numberOfMonths)
-	{
-		$(".monthList").each(function(){
-			
-			for(var i = 1; i <= numberOfMonths; i++)
-			{
-				$(".monthList").append("<li>" + $(this).text(i) + "</li>");
-			}
-		});
-	}
+	}	
 });
 
