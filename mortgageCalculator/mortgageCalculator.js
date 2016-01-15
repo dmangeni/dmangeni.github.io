@@ -51,6 +51,9 @@ $(document).ready(function()
 		var yearName = $("#termDropDownBT option:selected").text();
 		var numberOfYears = parseInt($("#termDropDownBT option:selected").val());
 
+		var start = $("#startMonthTB").val();
+		var end = $("#endMonthTB").val();
+
 		 //Calculate data
 		monthlyRate = annualRate / (12 * 100);
 		var numberOfMonths = numberOfYears * 12;
@@ -97,6 +100,7 @@ $(document).ready(function()
 
 	       $("#summaryTableOutputDiv").append(createSummaryTable(summaryTablelabels, 6, 2));
 	       $("#amortizationScheduleOutputDiv").append(createamortizationTable(numberOfMonths,monthlyPayment,annualRate,loan)); 
+	       hideTableRows(start, end);
 	    } 
 	});
 
@@ -204,6 +208,20 @@ $(document).ready(function()
 	{
 	    var loanheading = $("<h3/>").attr("id", "loanInformationHeading").addClass("subtitle").text("Loan Information");
 	    $("#loanInformation").append(loanheading);
+	}
+
+	function hideTableRows(low,high)
+	{
+		 $("#amortizationTable tr").each(function(rowIndex, value){
+
+		 	if(rowIndex >= 1 && rowIndex < low){
+		 		$(this).hide();
+		 	}
+		 	if(rowIndex > high){
+		 		$(this).hide();
+		 	}
+
+		 });
 	}	
 });
 
