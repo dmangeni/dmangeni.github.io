@@ -3,57 +3,31 @@ $(document).ready(function()
 	console.log("DOM loaded");
 
 	createLoanInformationHeading();
-
-	//get the buttons
-	var submitButton = document.querySelector("#submitButton");
-	var clearButton = document.querySelector("#clearButton");
-
-	//link the 'click' event on the button to the 'clear' function
-	clearButton.addEventListener("click", clear, false);
-	    
+   
 	//link the 'click' event on the button to the 'display' function
-	submitButton.addEventListener("click", display, false);
-
-
-	function display(event)
+	$("#submitButton").on("click", function()
 	{
-	     
-	     //Global variables
-	    var numberOfMonths,
-	        annualRate,
-	        monthlyPayment,
-	        totalPaid,
-	        paidToPrincipal,
-	        totalInterest,
-	        loan;
+		
+		var loan = $("#loanPrincipalTB").val();
+		
+		//Grab the value for interest rate from the textbox
+		var annualRate = $("#interestRateTB").val()
 
-	    //Grab the value for the loan from the textbox
-	    loan = document.querySelector("#loanPrincipalTB").value;
+		//Grab the value for the loan period from the drop down list object
+		var yearName = $("#termDropDownBT option:selected").text();
+		var numberOfYears = parseInt($("#termDropDownBT option:selected").val());
 
+		 //Calculate data
+		monthlyRate = annualRate / (12 * 100);
+		var numberOfMonths = numberOfYears * 12;
+		var temp = 1 - (Math.pow((1 + monthlyRate),( -numberOfMonths)));
+		var monthlyPayment = (monthlyRate / temp) * loan;
 
-	    //Grab the value for interest rate from the textbox
-	    annualRate = document.querySelector("#interestRateTB").value;
+		var obj = getSelectedYears(numberOfMonths);
 
-
-	    //Grab the value for the loan period from the drop down list object
-	    var termDropDown = document.querySelector("#termDropDownBT");
-	    var yearIndex = termDropDown.selectedIndex;
-	    var yearName = termDropDown.options[yearIndex].text;
-	    var numberOfYears = parseInt(termDropDown.options[yearIndex].value);
-
-
-	    //Calculate summary table data
-	    monthlyRate = annualRate / (12 * 100);
-	    numberOfMonths = numberOfYears * 12;
-
-	    //Get the monthly payment
-	    var temp = 1 - (Math.pow((1 + monthlyRate),( -numberOfMonths)));
-	    monthlyPayment = (monthlyRate / temp) * loan;
-
-
-	    //Get the total principal paid and total interest
-	    totalInterest = 0;
+		//Get the total principal paid and total interest
 	    var totalPrincipalPaid = 0,
+	    	totalInterest = 0,
 	        principalBalance = loan;
 
 	    for(var i = 0; i < numberOfMonths; i++)
@@ -67,8 +41,8 @@ $(document).ready(function()
 	    }
 
 	    //Ensure the results are to two decimal points
-	    totalPaid = parseInt(totalInterest) + parseInt(loan);
-	    paidToPrincipal = (totalPaid / loan);
+	    var totalPaid = parseInt(totalInterest) + parseInt(loan);
+	    var paidToPrincipal = (totalPaid / loan);
 
 
 	    //Create an array of arrays to hold the items of the list
@@ -80,24 +54,27 @@ $(document).ready(function()
 	                  ["Ratio: PaidToPrincipal", paidToPrincipal.toFixed(2)]];
 
 
-	     //Create the Mortgage summary table only if it does not exist
-
-	    var mysummaryTable = document.querySelector("#summaryTable");
-	    var myamortizationTable = document.querySelector("#amortizationTable");
-
-	    var retVal1 = document.getElementById("summaryTableOutputDiv").contains(mysummaryTable);
-	    var retVal2 = document.getElementById("amortizationScheduleOutputDiv").contains(mysummaryTable);
+		//Create the Mortgage summary table only if it does not exist
+		var retVal1 = $("summaryTableOutputDiv").length;
+		var retVal2 = $("amortizationScheduleOutputDiv").length;
 
 
-	    if(retVal1 == false && retVal2 == false)
+	    if(retVal1 == 0 && retVal2 == 0)
 	    {
-	        createMortgageSummaryHeading();
-	        createAmortizationScheduleHeading();
+	       createSummaryScheduleHeading();
 
 	       $("#summaryTableOutputDiv").append(createSummaryTable(summaryTablelabels, 6, 2));
 	       $("#amortizationScheduleOutputDiv").append(createamortizationTable(numberOfMonths,monthlyPayment,annualRate,loan)); 
-	    }  
-	}
+	    } 
+	});
+
+	//link the 'click' event on the button to the 'clear' function
+	$("#clearButton").on("click", function(){
+
+		//clear the contents of the div.
+	     $("#mortgageSummaryDiv").remove();
+	     $("#amortizationScheduleOutputDiv").remove();
+	});
 
 	//Create a summary table
 	function createSummaryTable(data, rows, cols)
@@ -136,6 +113,7 @@ $(document).ready(function()
 	    //Create the two arrays
 	    var amortizationTableLabels = ["Month", "Monthly Payment", "Principal Paid", "Monthly Interest", "principal Balance"];
 	    var amortizationTableData =[];
+	    
 	    var principalBalance = loan;
 	    var monthlyRate = annualRate / (12 * 100);
 
@@ -181,60 +159,51 @@ $(document).ready(function()
 	    }
 	    return amortizationScheduleTable;
 	}
-	function createMortgageSummaryHeading()
+	function createSummaryScheduleHeading()
 	{
 	    var sheading = $("<h3/>").attr("id", "summaryHeading").addClass("subtitle").text("Mortgage Summary");
 	    $("#summaryTableOutputDiv").append(sheading);
-	}
 
-	function createAmortizationScheduleHeading()
-	{
 	    var asheading = $("<h3/>").attr("id", "amortizationHeading").addClass("subtitle").text("Amortization Schedule");
 	    $("#amortizationScheduleOutputDiv").append(asheading);
+
 	}
 	function createLoanInformationHeading()
 	{
 	    var loanheading = $("<h3/>").attr("id", "loanInformationHeading").addClass("subtitle").text("Loan Information");
 	    $("#loanInformation").append(loanheading);
 	}
-	/*function startList(numberOfMonths)
+	function getSelectedYears(numberOfMonths)
 	{
-		
-		var startList = $("<ul/>").attr("id", "startList").addClass("dropdown-menu").;
-		$("#startListDiv").append(startList);
+		//Add event listener for the buttons.
 
-		$("#startList").each(function(){
-			for(int i = 1; i <= numberOfMonths; i++){
-				startList.append("<li>" + $(this).text(i) + "</li>");
-			}
-		}
+	    $("#startDropDownBT").on("click",function()
+		{
+			createList(numberOfMonths);
+		})
 
-		var endList = $("<ul/>").attr("id", "endList").addClass("dropdown-menu");
-		$("#endListDiv").append(startList);
+		$("#endDropDownBT").on("click", function()
+		{
+			createList(numberOfMonths);
+		});
 
-		$("#endList").each(function(){
-			for(int i = 1; i <= numberOfMonths; i++){
-				endList.append("<li>" + $(this).text(i) + "</li>");
-			}
-		}
+		//Get the upper limit and lower limit for display
+		var lowerLimit = $("#startList").children("selected");
+		var upperLimit = $("#endList").children("selected");
 
-		$(this).append(
-    $('<input>', {
-        type: 'text',
-        val: $('#div1').text()
-    }) -->*/
+		var limits = [lowerLimit, upperLimit];
 
-	 //function to clear out the output div
-	function clear(e) 
+		return limits;
+	}
+	function createList(numberOfMonths)
 	{
-	    //get the output div
-	        var outputDiv1 = document.querySelector("#mortgageSummaryDiv");
-	        var outputDiv2 = document.querySelector("#amortizationScheduleOutputDiv");
-	        
-	    //clear out the entire contents of the div
-	     outputDiv1.innerHTML = "";
-	     outputDiv2.innerHTML = "";
-
+		$(".monthList").each(function(){
+			
+			for(var i = 1; i <= numberOfMonths; i++)
+			{
+				$(".monthList").append("<li>" + $(this).text(i) + "</li>");
+			}
+		});
 	}
 });
 
