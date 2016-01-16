@@ -12,35 +12,11 @@ $(document).ready(function()
 		data[i] = i;
 	}
 
-	/*/Fill the drop down list for start month
-	$("#startDropDownBT").on("click", function()
-		{
-			var listItems = [];
-			$.each(data, function(index){
-	    		listItems.push($('<li/>').text(index + 1));
-	    	});
-
-	    	//$(".monthList").append("<li>" + $(this).text(i) + "</li>");
-			$("#startList").append(listItems);
-
-	});
-
-	//Fill the List for the end month
-	$("#endDropDownBT").on("click",function()
-		{
-			var listItems = [];
-			$.each(data, function(index){
-	    		listItems.push($('<li/>').text(index + 1));
-	    	});
-
-	    	//$(".monthList").append("<li>" + $(this).text(i) + "</li>");
-			$("#endList").append(listItems);
-
-	}); */
-   
+	
 	//link the 'click' event on the button to the 'display' function
 	$("#submitButton").on("click", function()
 	{
+		
 		//Grab the loan amount from the textbox
 		var loan = $("#loanPrincipalTB").val();
 		
@@ -79,7 +55,6 @@ $(document).ready(function()
 	    var totalPaid = parseInt(totalInterest) + parseInt(loan);
 	    var paidToPrincipal = (totalPaid / loan);
 
-
 	    //Create an array of arrays to hold the items of the list
 	    var summaryTablelabels = [["Loan", loan], 
 	                  ["Annual Rate", annualRate], 
@@ -108,8 +83,8 @@ $(document).ready(function()
 	$("#clearButton").on("click", function(){
 
 		//clear the contents of the div.
-	     $("#mortgageSummaryDiv").remove();
-	     $("#amortizationScheduleOutputDiv").remove();
+	     $("#mortgageSummaryDiv").empty();
+	     $("#amortizationScheduleOutputDiv").empty();
 	});
 
 	//Create a summary table
@@ -213,6 +188,7 @@ $(document).ready(function()
 	function hideTableRows(low,high)
 	{
 		 $("#amortizationTable tr").each(function(rowIndex, value){
+		 	console.log("index:" + rowIndex);
 
 		 	if(rowIndex >= 1 && rowIndex < low){
 		 		$(this).hide();
@@ -225,3 +201,30 @@ $(document).ready(function()
 	}	
 });
 
+
+/*/Fill the drop down list for start month //This
+//should be outside the submit button
+	$("#startDropDownBT").on("click", function()
+		{
+			var listItems = [];
+			$.each(data, function(index){
+	    		listItems.push($('<li/>').text(index + 1));
+	    	});
+
+	    	//$(".monthList").append("<li>" + $(this).text(i) + "</li>");
+			$("#startList").append(listItems);
+
+	});
+
+	//Fill the List for the end month
+	$("#endDropDownBT").on("click",function()
+		{
+			var listItems = [];
+			$.each(data, function(index){
+	    		listItems.push($('<li/>').text(index + 1));
+	    	});
+
+	    	//$(".monthList").append("<li>" + $(this).text(i) + "</li>");
+			$("#endList").append(listItems);
+
+	}); */
