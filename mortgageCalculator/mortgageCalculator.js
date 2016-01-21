@@ -4,7 +4,6 @@ $(document).ready(function()
 
 	createLoanInformationHeading();
 
-
 	var numberOfMonths = (parseInt($("#termDropDownBT option:selected").val()))*12;
 	var data = [];
 	for(var i = 1; i <= numberOfMonths; i++)
@@ -12,24 +11,84 @@ $(document).ready(function()
 		data[i] = i;
 	}
 
+	//Check for empty fields in the loan and interest rate textbox
+		$(".form-control").each(function(){
+	 	
+	 	$(this).keyup(function(){
+
+			var is_number =$(this).val();
+			if(is_number){$(this).removeClass("invalid").addClass("valid");}
+			else{$(this).removeClass("valid").addClass("invalid");}
+	 	});
+	 	
+	 	$(this).bind('paste', function(){
+
+	 		var is_number =$(this).val();
+			if(is_number){$(this).removeClass("invalid").addClass("valid");}
+			else{$(this).removeClass("valid").addClass("invalid");}
+	 	}); });
+
+	 	//Check for empty fields in the lstart and end month textbox fields
+		$(".monthLimits").each(function(){
+	 	
+	 	$(this).keyup(function(){
+
+	 		var is_number =$(this).val();
+			if(is_number){$(this).removeClass("invalid").addClass("valid");}
+			else{$(this).removeClass("valid").addClass("invalid");}
+	 	});
+	 	
+	 	$(this).bind('paste', function(){
+
+	 		var is_number =$(this).val();
+			if(is_number){$(this).removeClass("invalid").addClass("valid");}
+			else{$(this).removeClass("valid").addClass("invalid");}
+	 	}); });
+
+		//Check for a valid interest rate
+		$("#interestRateTB").keypress(function(event){ 
+    		console.log("Key: " + event.which);
+		});
+
+
+
+
+	//'input[type="number"]'
+
+	//Grab the loan amount from the textbox
+	var loan = $("#loanPrincipalTB").val();
 	
+	//Grab the value for interest rate from the textbox
+	var annualRate = $("#interestRateTB").val()
+
+	//Grab the value for the loan period from the drop down list object
+	var yearName = $("#termDropDownBT option:selected").text();
+	var numberOfYears = parseInt($("#termDropDownBT option:selected").val());
+
+	var start = $("#startMonthTB").val();
+	var end = $("#endMonthTB").val();
+
+	var errorMessage = $("#infotext").text(); //to display error message
+
+
 	//link the 'click' event on the button to the 'display' function
 	$("#submitButton").on("click", function()
 	{
+		var form_data=$("#contact").serializeArray();
+		var error_free=true;
+		for (var input in form_data)
+		{
+			var element=$("#contact_"+form_data[input]['name']);
+			var valid=element.hasClass("valid");
+			var error_element=$("span", element.parent());
+			if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+			else{error_element.removeClass("error_show").addClass("error");}
+		}
+		if (!error_free){
+			event.preventDefault(); 
+		}
+
 		
-		//Grab the loan amount from the textbox
-		var loan = $("#loanPrincipalTB").val();
-		
-		//Grab the value for interest rate from the textbox
-		var annualRate = $("#interestRateTB").val()
-
-		//Grab the value for the loan period from the drop down list object
-		var yearName = $("#termDropDownBT option:selected").text();
-		var numberOfYears = parseInt($("#termDropDownBT option:selected").val());
-
-		var start = $("#startMonthTB").val();
-		var end = $("#endMonthTB").val();
-
 		 //Calculate data
 		monthlyRate = annualRate / (12 * 100);
 		var numberOfMonths = numberOfYears * 12;
@@ -86,6 +145,65 @@ $(document).ready(function()
 	     $("#mortgageSummaryDiv").empty();
 	     $("#amortizationScheduleOutputDiv").empty();
 	});
+
+	//declare name validation function
+	function validateInput()
+	{
+		
+		
+
+
+		/*/validation for empty loan field
+		if (loan == "") {
+			$("#errorSpanL").addClass("error");
+			$(this).css('display', 'inline');
+			$(this).addClass("error");
+			return false;
+		} else {
+			$(this).removeClass("error");
+			$(this).text("*");
+			$(this).removeClass("error");
+		}
+
+		//Check for empty interest rate field
+		if (annualRate == "") {
+			$("#errorSpanI").addClass("error");
+			$(this).css('display', 'inline');
+			$(this).addClass("error");
+			return false;
+		} else {
+			$(this).removeClass("error");
+			$(this).text("*");
+			$(this).removeClass("error");
+		}
+		//*Check for valid interest rate
+		if (annualRate < $(this).min || annualRate > $(this).max) {
+			name.addClass("error");
+			nameInfo.text("Names with more than 2 letters!");
+			nameInfo.addClass("error");
+			return false;
+		}
+		//if it's valid
+		else {
+		name.removeClass("error");
+		nameInfo.text("*");
+		nameInfo.removeClass("error");
+		}
+		// validation only for characters no numbers
+		var filter = /^[a-zA-Z]*$/;
+		if (filter.test(name.val())) {
+		name.removeClass("error");
+		nameInfo.text("*");
+		nameInfo.removeClass("error");
+		return true;
+		}
+		else {
+		name.addClass("error");
+		nameInfo.text("Names cannot have numbers!");
+		nameInfo.addClass("error");
+		return false;
+		}*/
+	}
 
 	//Create a summary table
 	function createSummaryTable(data, rows, cols)

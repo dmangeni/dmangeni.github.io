@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- My style sheet -->
+    	<link rel="stylesheet" type="text/css" href= "../css/stylist.css">
+
+		<title>findyourstylist</title>
+	</head>
+
+	<body>
+		<div ng app ="" class="container">
+			<section>
+				<header>
+					<div class="well">
+						<h4>
+							<span>Find Your Stylist</span> 
+							<span style = "float: right;"> Not interested in styling?
+							<a href="client-registration.html" class="btn btn-info" role="button"> Sign up as a client</a>
+							</span>
+						</h4>
+					</div>	
+				</header>
+
+				<!--container for the stylist registration details -->
+				<section class = "content">
+					<section class = "row">
+						<article class = "col-sm-4 col-sm-offset-8">
+							<div class = "well">
+								<form name = "stylistRegistrationForm">
+									<h4>
+										<p style = "text-align: center">Sign up as a stylist</p>
+										<a href="login.html" class= "btn btn-primary btn-block" role="button"> Already have an Account? </a>
+									</h4>
+
+									<!--Registration information from the user -->
+									<div class ="form-group">
+										<div class = "row form-row">
+											<!--textbox for the firstname-->
+											<div class="col-sm-6">
+												<input type="text" class ="form-control" value="" name="first_name" id="first_name" autofocus placeholder="First Name" required>
+												<div id ="firstNameError"  class = "error-notice">Valid First Name is required</div>
+												
+											</div>
+											<!--textbox for the lastname-->
+											<div class="col-sm-6">
+												<input type="text" class ="form-control" value="" name="last_name" id="last_name" placeholder="Last Name">
+												<div class="error-notice" required> Valid Last Name is required</div>
+											</div>
+
+										</div>
+									</div>
+									<!--Email address-->
+									<div class ="form-group">
+										<input type="email" class ="form-control" value="" name="email" id="email" placeholder="name@example.com">
+										<div class="error-notice" required>Valid email address is required</div>		
+									</div>
+
+									<!--Mobile Phone-->
+									<div class ="form-group">
+										<input type="tel" required class ="form-control" value="" name="contactinfo" id="contactinfo" placeholder="+ 1(262)-785-9304" required>
+										<div class="error-notice"> Valid Mobile Phone Number is required</div>		
+									</div>
+
+									<!--Password textbox-->
+									<div class ="form-group">
+										<input type="password" class ="form-control" value="" name="password" id="password" placeholder="Password (At least 5 characters)" required>
+										<div class="error-notice">Password must be at least 5 characters</div>		
+									</div>
+
+									<!--City-->
+									<div class ="form-group">
+										<input type="text" class ="form-control" value="" name="city_name" id="city_name" placeholder="City" required>
+										<div class="error-notice"> Valid city is required </div>		
+									</div>
+									<!--Drop Down List for Languages-->
+									<div class ="form-group">
+										<select class="form-control bfh-languages" data-language="en" id = "languageDD">
+											<option value="az_AZ" label="Azərbaycanca (Latın, Azərbaycan)" None >Azərbaycanca (Latın, Azərbaycan)</option>
+											<option value="id_ID" label="Bahasa Indonesia (Indonesia)" None >Bahasa Indonesia (Indonesia)</option>
+											<option value="ms_MY" label="Bahasa Melayu (Latin, Malaysia)" None >Bahasa Melayu (Latin, Malaysia)</option>
+											<option value="da_DK" label="Dansk (Danmark)" None >Dansk (Danmark)</option>
+											<option value="de" label="Deutsch" None >Deutsch</option>
+											<option value="et_EE" label="Eesti (Eesti)" None >Eesti (Eesti)</option>
+											<option value="en" label="English" selected >English</option>
+											<option value="en_GB" label="English (United Kingdom)" None >English (United Kingdom)</option>
+											<option value="sw" label="Swahili" None Swahili</option>
+											<option value="es" label="Español" None >Español</option>
+											<option value="es_ES" label="Español (España)" None >Español (España)</option>
+											<option value="tl_PH" label="Filipino (Pilipinas)" None >Filipino (Pilipinas)</option>
+											<option value="fr" label="Français" None >Français</option>
+											<option value="fr_CA" label="Français (Canada)" None >Français (Canada)</option>
+											<option value="hr_HR" label="Hrvatski (Hrvatska)" None >Hrvatski (Hrvatska)</option>
+											<option value="it" label="Italiano" None >Italiano</option>
+											<option value="lv_LV" label="Latviešu (Latvija)" None >Latviešu (Latvija)</option>
+											<option value="lt_LT" label="Lietuvių (Lietuva)" None >Lietuvių (Lietuva)</option>
+											<option value="hu_HU" label="Magyar (Magyarország)" None >Magyar (Magyarország)</option>
+											<option value="nl" label="Nederlands" None >Nederlands</option>
+											<option value="nb_NO" label="Norsk Bokmål (Norge)" None >Norsk Bokmål (Norge)</option>
+											<option value="pl_PL" label="Polski (Polska)" None >Polski (Polska)</option>
+											<option value="pt_BR" label="Português (Brasil)" None >Português (Brasil)</option>
+											<option value="pt_PT" label="Português (Portugal)" None >Português (Portugal)</option>
+											<option value="ro_RO" label="Română (România)" None >Română (România)</option>
+											<option value="sk_SK" label="Slovenčina (Slovensko)" None >Slovenčina (Slovensko)</option>
+											<option value="sl_SI" label="Slovenščina (Slovenija)" None >Slovenščina (Slovenija)</option>
+											<option value="fi_FI" label="Suomi (Suomi)" None >Suomi (Suomi)</option>
+											<option value="sv" label="Svenska" None >Svenska</option>
+											<option value="vi_VN" label="Tiếng Việt (Việt Nam)" None >Tiếng Việt (Việt Nam)</option>
+											<option value="tr_TR" label="Türkçe (Türkiye)" None >Türkçe (Türkiye)</option>
+											<option value="cs_CZ" label="Čeština (Česká Republika)" None >Čeština (Česká Republika)</option>   
+											<option value="el" label="Ελληνικά" None >Ελληνικά</option>
+											<option value="be_BY" label="Беларуская (Беларусь)" None >Беларуская (Беларусь)</option>
+											<option value="bg_BG" label="Български (България)" None >Български (България)</option>
+											<option value="ru_RU" label="Русский (Россия)" None >Русский (Россия)</option>
+											<option value="uk_UA" label="Українська (Україна)" None >Українська (Україна)</option>
+											<option value="he_IL" label="עברית (ישראל)" None >עברית (ישראל)</option>
+											<option value="ur" label="اردو" None >اردو</option>
+											<option value="ar_SA" label="العربية (المملكة العربية السعودية)" None >العربية (المملكة العربية السعودية)</option>
+											<option value="mr_IN" label="मराठी (भारत)" None >मराठी (भारत)</option>
+											<option value="hi_IN" label="हिन्दी (भारत)" None >हिन्दी (भारत)</option>
+											<option value="bn_BD" label="বাংলা (বাংলাদেশ)" None >বাংলা (বাংলাদেশ)</option>
+											<option value="ta_IN" label="தமிழ் (இந்தியா)" None >தமிழ் (இந்தியா)</option>
+											<option value="te_IN" label="తెలుగు (భారత దేశం)" None >తెలుగు (భారత దేశం)</option>
+											<option value="kn_IN" label="ಕನ್ನಡ (ಭಾರತ)" None >ಕನ್ನಡ (ಭಾರತ)</option>
+											<option value="ml_IN" label="മലയാളം (ഇന്ത്യ)" None >മലയാളം (ഇന്ത്യ)</option>
+											<option value="th_TH" label="ไทย (ไทย)" None >ไทย (ไทย)</option>
+											<option value="zh_CN" label="中文 (简体中文, 中国)" None >中文 (简体中文, 中国)</option>
+											<option value="zh_TW" label="中文 (繁體中文, 台灣)" None >中文 (繁體中文, 台灣)</option>
+											<option value="zh_HK" label="中文 (繁體漢字, 中華人民共和國香港特別行政區)" None >中文 (繁體漢字, 中華人民共和國香港特別行政區)</option>
+											<option value="ja" label="日本語" None >日本語</option>
+											<option value="ko" label="한국어" None >한국어</option>
+      								</select>
+									</div>
+
+									<!--Submit section-->
+									<div class = "form-group">
+  										<a href="login.html" id = "submitButton" class= "btn btn-primary btn-block" role="button" class ="form-control">Next</a><br><br>
+  										<p id = "submitParagraph">By proceeding, I agree that FindYourStylist or its representatives may contact me by email, phone, or SMS (including by automatic telephone dialing system) at the email address or number I provide, including for marketing purposes. I have read and understand the relevant <a href="client_privacy_statement.html">Client Privacy Statement.</a>
+  										</p>
+    									</div>
+  									</div>
+								</form>
+							</div>
+						</article>
+					</section>
+				</section>	
+			</section>	
+		</div>
+
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<!--compiled and minified angular javascript plugins-->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+		<!-- firebase library -->
+		<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+		<script src = "../js/stylist-registration.js"></script>
+	</body>
+</html>

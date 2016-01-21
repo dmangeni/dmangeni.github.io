@@ -1,0 +1,23 @@
+body{
+	background-image: url(http://egocouture.net/wp-content/uploads/black-hairstyles19.jpg);
+  	background-repeat: no-repeat;
+  	background-origin: content-box;
+  	background-size: cover;
+  	background-attachment: fixed;
+}
+h4{
+	text-transform: uppercase;
+}
+#submitParagraph{
+	font-size: 12px;
+	font-family: "Arial Narrow", Arial, Helvetica, "Helvetica Condensed";
+}
+.error-notice{
+	display: none;
+}
+/*input:invalid {
+  border: 1px solid red;
+}
+input:valid {
+  border: 1px solid green;
+}*/

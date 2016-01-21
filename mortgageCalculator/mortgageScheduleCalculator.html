@@ -26,7 +26,7 @@
     	</title>
     </head>
     <body>
-       <div class = "container-fluid">
+       <div class = "container-fluid" id = "pageWrap">
             <div class = "row">
             <div class = "col-sm-8">
                 <div class = "page-header">
@@ -48,13 +48,15 @@
                     <!--Input: Loan or principal -->
                     <div class = "form-group">
                         <label for = "loanPrincipalTB"> Principal: </label>
-                        <input type = "number" class="form-control" name="loanPrincipalTB" id="loanPrincipalTB" placeholder = "Enter Loan">
+                        <input type = "number" id="loanPrincipalTB" class="form-control" name="loanPrincipalTB" placeholder = "Enter Loan">
+                        <span id="errorSpanL" class="error">This field is required</span>
                     </div>
             
                     <!-- Input: Annual Interest rate -->
                     <div class = "form-group">
-                        <label for = "interestRateTB"> Annual Interest rate (%): </label>
-                        <input type = "number" class="form-control" name="interestRateTB" id="interestRateTB" placeholder = "Enter interest rate">
+                        <label for = "interestRateTB"> Annual Interest rate(%): </label>
+                        <input type = "number" id ="interestRateTB" class="form-control" name="interestRateTB" placeholder = "Enter interest rate" min = "0.1" max = "100">
+                        <span id ="errorSpanI" class="error">A valid interest rate is required</span>    
                     </div>
 
                     <!-- Drop down list of loan term -->
@@ -64,8 +66,8 @@
                         <select class="form-control" id="termDropDownBT"> 
                             <option value= "15"> 15 years</option> 
                             <option value= "20"> 20 years</option> 
-                            <option value= "30" selected="selected">30 years</option> 
-                        </select>                   
+                            <option value= "30" selected = "selected"> 30 years</option> 
+                        </select>                
                     </div>
 
                     <br>
@@ -76,10 +78,12 @@
                         <div class = "form-group" id = "startMonthDiv">
                            <span>
                                 <label for = "startMonthTB"> Enter Start Month: </label>
-                                <input type = "number" name="startMonthTB" id="startMonthTB" max = "360" min = "1" placeholder = "">
+                                <input type = "number" name="startMonthTB" id="startMonthTB" max = "360" min = "1" placeholder = "" class = "monthLimits">
+                                <span id = "errorSpanStart" class="error">A valid start month required</span>
 
                                 <label for = "endMonthTB"> Enter End Month: </label>
-                                <input type = "number" name="startMonthTB" id="endMonthTB" max = "360" min = "1"placeholder = "">
+                                <input type = "number" name="startMonthTB" id="endMonthTB" max = "360" min = "1" placeholder = "" class = "monthLimits">
+                                <span id ="errorSpanEnd" class="error">A valid start is required</span>
                            </span>
                         </div>
                     </div>

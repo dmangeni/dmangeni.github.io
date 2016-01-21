@@ -70,3 +70,23 @@ img.displayed{
 	width: 200px;
 	font-size: 14px;
 }
+.error{
+	display: none;
+}
+.error_show{
+	color: :red;
+}
+input.invalid, textarea.invalid{
+	border: 2px solid red;
+}
+
+input.valid, textarea.valid{
+	border: 2px solid green;
+}
+#pageWrap{
+
+	/*position: absolute;
+	left: 50%;
+	width: 800px;
+	margin-left: -400px;*/
+}
