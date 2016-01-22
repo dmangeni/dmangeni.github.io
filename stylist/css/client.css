@@ -1,6 +1,9 @@
 h4{
 	text-transform: uppercase;
+	text-align: center;
+	color:steelblue;
 }
+
 .error_notice{
 	color: #D8000C;
 	background-color: #FFBABA;
