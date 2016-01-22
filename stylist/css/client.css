@@ -1,3 +1,27 @@
 h4{
 	text-transform: uppercase;
 }
+.error_notice{
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('error.png');
+}
+#clientLoginBody{
+	/*background-image: url(http://farabale.co/wp-content/uploads/2015/06/EL-TV-Presenter-Cynthia-Kamalu-I-Am-Muse-Beauty-Shoot-Farabale.co-01-672x510.jpg); 
+	https://s-media-cache-ak0.pinimg.com/736x/39/dc/54/39dc5488b27d5e8670b0ecbf94cbb802.jpg
+	http://drinkblackwater.com/wp-content/uploads/2012/06/nunez2.jpg*/
+	background-image: url(http://hairstylesforwomenvip.net/wp-content/uploads/2014/07/Black-Natural-Mohawk-Curly-Hairstyle-495x300.jpg);
+  	background-origin: content-box;
+  	background-size: cover;
+  	background-attachment: fixed;
+  	background-position: center;
+}
+#clientRegistrationBody
+{
+	background-image: url(http://myworldhairstyle.com/wp-content/uploads/2015/04/mohawk-hairstyles-on-natural-hair.jpg);
+  	background-origin: content-box;
+  	background-size: cover;
+  	background-attachment: fixed;
+  	background-position: center;
+
+}

@@ -15,8 +15,26 @@ h4{
 .error-notice{
 	display: none;
 }
-/*input:invalid {
-  border: 1px solid red;
+#stylistHomePage{
+  background-image: url(https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11379732_935976483120127_731740275_n.jpg);
+  background-repeat: repeat;
+  background-origin: content-box;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+#stylistLoginBody{
+    background-image: url(http://hairstylesforwomenvip.net/wp-content/uploads/2014/07/Black-Natural-Mohawk-Curly-Hairstyle-495x300.jpg);
+    background-origin: content-box;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+h2{
+  color: navy;
+}
+/* background-image: url(https://yt3.ggpht.com/-Y1zEDE_dycU/AAAAAAAAAAI/AAAAAAAAAAA/AG62gzO0qdE/s900-c-k-no/photo.jpg);
+  background-repeat: repeat;
 }
 input:valid {
   border: 1px solid green;

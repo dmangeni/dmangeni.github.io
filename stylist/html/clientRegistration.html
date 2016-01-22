@@ -25,12 +25,12 @@
 		<title>findyourstylist</title>
 	</head>
 
-	<body>
+	<body id ="clientRegistrationBody">
 		<div class="container">
 			<section>
 				<header>
 					<div class="well">
-						<h4 style = "text-align: center"> Find Your Stylist</h4>
+						<h4 style = "text-align: center"> Stylist </h4>
 					</div>	
 				</header>
 
@@ -42,30 +42,29 @@
 								<form class = "form-vertical">
 									<h4>
 										<p style = "text-align: center">Sign up as a client</p>
-										<a href="login.html" class= "btn btn-primary btn-block" role="button"> Already have an Account? </a>
 									</h4>
 
-									<!--Registration information from the user -->
+									<!--Profile -->
 									<div class ="form-group">
 										<div class = "row form-row">
-											<!--textbox for the firstname-->
-											<div class="col-sm-6">
-												<label for="first_name">FirstName: </label>
-												<input type="text" class ="form-control" value="" name="first_name" id="first_name" autofocus placeholder="First Name">
-												<div class="error-notice"></div>
+											<!--Label for the firstname-->
+											<div class ="col-sm-6">
+												<label for="email">FirstName: </label>
+												<input type="text" class ="form-control" value="" name="first_name" id="first_name" placeholder="first Name">
+												<div class="error-notice"></div>		
 											</div>
 											<!--textbox for the lastname-->
-											<div class="col-sm-6">
-												<label for="last_name">LastName: </label>
-												<input type="text" class ="form-control" value="" name="last_name" id="last_name" placeholder="Last Name">
-												<div class="error-notice"></div>
+											<div class ="col-sm-6">
+												<label for="last_name"> LastName: </label>
+												<input type="text" class ="form-control" value="" name="last_name" id="last_name" placeholder="last Name">
+												<div class="error-notice"></div>		
 											</div>
 
 										</div>
 									</div>
 									<!--Email address-->
 									<div class ="form-group">
-										<label for="email">email: </label>
+										<label for="email">Email: </label>
 										<input type="email" class ="form-control" value="" name="email" id="email" placeholder="name@example.com">
 										<div class="error-notice"></div>		
 									</div>
@@ -151,7 +150,7 @@
 
 									<!--Submit section-->
 									<div class = "form-group">
-  										<a id ="submitButton"  href="login.html" class= "btn btn-primary btn-block" role="button" class ="form-control">Next</a><br><br>
+  										<a id ="submitButton"  href="loginClient.html" class= "btn btn-primary btn-block" role="button" class ="form-control">Next</a><br><br>
   										<p id = "submitParagraph">By proceeding, I agree that FindYourStylist or its representatives may contact me by email, phone, or SMS (including by automatic telephone dialing system) at the email address or number I provide, including for marketing purposes. I have read and understand the relevant <a href="client_privacy_statement.html">Client Privacy Statement.</a>
   										</p>
     									</div>
